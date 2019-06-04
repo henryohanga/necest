@@ -1,13 +1,17 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Login</ion-title>
+    <ion-title>Create your account</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-row>
     <ion-col size="12">
-      <h5 text-center>Enter yout credentials to login</h5>
+      <ion-item>
+        <ion-label position="stacked">Organization</ion-label>
+        <ion-input [(ngModel)]="user.organization_name"></ion-input>
+      </ion-item>
+
       <ion-item>
         <ion-label position="stacked">Username</ion-label>
         <ion-input [(ngModel)]="user.username"></ion-input>
@@ -19,11 +23,13 @@
       </ion-item>
 
       <p text-center>
-        <ion-button color="primary" (click)="login()">Login</ion-button>
+        <ion-button color="primary" (click)="signup()">Sign up</ion-button>
       </p>
 
       <div text-center>
-        <p>Don't have an account? <a routerLink="/signup">Signup</a></p>
+        <p>
+          Already have an account? <a [routerLink]="['/signin']">Sign in</a>
+        </p>
       </div>
     </ion-col>
   </ion-row>
