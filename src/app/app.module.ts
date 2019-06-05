@@ -9,7 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
 import { File } from '@ionic-native/File/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
-import { FilePath } from '@ionic-native/file-path/ngx';
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
 
 import { IonicStorageModule } from '@ionic/storage';
 
@@ -33,6 +33,7 @@ import { AppComponent } from './app.component';
     Camera,
     File,
     WebView,
+    ImagePicker,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
   bootstrap: [AppComponent],

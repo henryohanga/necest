@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { Storage } from '@ionic/storage';
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
 
 import { Photo } from '../models/photo-location.model';
-import { HttpClient } from 'selenium-webdriver/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -43,6 +44,24 @@ export class PhotoService {
         console.log('Camera issue:' + err);
       },
     );
+  }
+
+  /**
+   * Select image from photo library
+   */
+  selectPictures() {
+    this.camera
+      .getPicture({
+        destinationType: this.camera.DestinationType.DATA_URL,
+        encodingType: this.camera.EncodingType.JPEG,
+        mediaType: this.camera.MediaType.PICTURE,
+        sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      })
+      .then(pic => {
+        this.photos.unshift({
+          data: 'data:image/jpeg;base64,' + pic,
+        });
+      });
   }
 
   /**
