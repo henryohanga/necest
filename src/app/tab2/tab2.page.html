@@ -1,5 +1,9 @@
 <ion-content fullscreen>
-  <ion-grid>
+  <ion-fab vertical="center" horizontal="center">
+    <ion-spinner *ngIf="photoService.loading" text-center></ion-spinner>
+  </ion-fab>
+
+  <ion-grid *ngIf="!photoService.loading">
     <ion-row>
       <ion-col size="12" *ngFor="let photo of photoService.photos">
         <ion-card>

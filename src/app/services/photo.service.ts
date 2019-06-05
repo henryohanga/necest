@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { Storage } from '@ionic/storage';
-import { ImagePicker } from '@ionic-native/image-picker/ngx';
 
 import { Photo } from '../models/photo-location.model';
 import { HttpClient } from '@angular/common/http';
@@ -11,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PhotoService {
   photos: Photo[] = [];
+  loading = true;
 
   constructor(
     private camera: Camera,
@@ -61,6 +61,9 @@ export class PhotoService {
         this.photos.unshift({
           data: 'data:image/jpeg;base64,' + pic,
         });
+
+        // Save all photos for later viewing
+        this.storage.set('photos', this.photos);
       });
   }
 
@@ -70,6 +73,9 @@ export class PhotoService {
   loadSaved() {
     this.storage.get('photos').then(photos => {
       this.photos = photos || [];
+      this.loading = false;
+    }).catch(err => {
+      this.loading = false;
     });
   }
 

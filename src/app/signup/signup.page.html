@@ -1,34 +1,44 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Create your account</ion-title>
+    <ion-title>Sign up</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-row>
-    <ion-col size="12">
-      <ion-item>
-        <ion-label position="stacked">Organization</ion-label>
-        <ion-input [(ngModel)]="user.organization_name"></ion-input>
-      </ion-item>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Fill in details to create account</ion-card-subtitle>
+    </ion-card-header>
 
-      <ion-item>
-        <ion-label position="stacked">Username</ion-label>
-        <ion-input [(ngModel)]="user.username"></ion-input>
-      </ion-item>
+    <ion-card-content>
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label position="stacked">Organization</ion-label>
+            <ion-input [(ngModel)]="user.organization_name"></ion-input>
+          </ion-item>
 
-      <ion-item>
-        <ion-label position="stacked">Password</ion-label>
-        <ion-input type="password" [(ngModel)]="user.password"></ion-input>
-      </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Username</ion-label>
+            <ion-input [(ngModel)]="user.username"></ion-input>
+          </ion-item>
 
-      <p text-center>
-        <ion-button color="primary" (click)="signup()">Sign up</ion-button>
-      </p>
+          <ion-item>
+            <ion-label position="stacked">Password</ion-label>
+            <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+          </ion-item>
 
-      <div text-center>
-        <p>Already have an account? <a routerLink="/login">Sign in</a></p>
-      </div>
-    </ion-col>
-  </ion-row>
+          <div text-center>
+            <ion-button color="primary" margin-top (click)="signup()"
+              >Sign up</ion-button
+            >
+          </div>
+
+          <div text-center margin-top>
+            <p>Already have an account? <a routerLink="/login">Sign in</a></p>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
