@@ -5,12 +5,12 @@
 </ion-header>
 
 <ion-content>
-  <ion-row>
+  <ion-row justifiy-content-center>
     <ion-col size="12">
       <h5 text-center>Enter yout credentials to login</h5>
       <ion-item>
         <ion-label position="stacked">Username</ion-label>
-        <ion-input [(ngModel)]="user.username"></ion-input>
+        <ion-input [(ngModel)]="user.username" autocapitalize="off"></ion-input>
       </ion-item>
 
       <ion-item>

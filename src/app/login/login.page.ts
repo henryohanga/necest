@@ -15,15 +15,13 @@ export class LoginPage implements OnInit {
     private authService: AuthService,
     private navCtrl: NavController,
     private storage: Storage,
-  ) {}
-
-  ngOnInit() {
-    this.storage.get('token').then(token => {
-      if (token) {
-        this.goToPics();
-      }
-    });
+  ) {
+    if (this.authService.getToken()) {
+      this.goToPics();
+    }
   }
+
+  ngOnInit() {}
 
   login() {
     this.authService.loginUser(this.user).subscribe(data => {

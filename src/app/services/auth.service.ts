@@ -14,6 +14,8 @@ export class AuthService {
   private clientSecret =
     'wIY-NecVICCZf6gBLwH_17kMgngqpJ_jFTZsAECXAjTbc94TTc21KU9x4W5RqSJ6NJnW9mwfcsfjqnrjhAMPcw';
 
+  private token = null;
+
   constructor(private http: HttpClient, private storage: Storage) {}
 
   createUser(user: User): Observable<User> {
@@ -36,6 +38,7 @@ export class AuthService {
       )
       .pipe(
         tap(token => {
+          this.token = token;
           this.storage.set('token', token);
         }),
       );
@@ -45,10 +48,10 @@ export class AuthService {
    * Get user token
    */
   getToken() {
-    let token = null;
+    this.storage.get('token').then(token => {
+      this.token = token;
+    });
 
-    this.storage.get('token').then(savedToken => (token = savedToken));
-
-    return token;
+    return this.token;
   }
 }
