@@ -4,6 +4,7 @@ import { RouteReuseStrategy, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
@@ -21,11 +22,11 @@ import { AppComponent } from './app.component';
   entryComponents: [],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(),
     AppRoutingModule,
     IonicStorageModule.forRoot(),
     RouterModule,
     HttpClientModule,
+    IonicModule.forRoot(),
   ],
   providers: [
     StatusBar,
@@ -34,6 +35,7 @@ import { AppComponent } from './app.component';
     File,
     WebView,
     ImagePicker,
+
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
   bootstrap: [AppComponent],
