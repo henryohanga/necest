@@ -5,22 +5,19 @@ import { Storage } from '@ionic/storage';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { User } from '../models/user.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private baseUrl = 'https://development-thenicest-api.newapp.io';
-  private clientSecret =
-    'wIY-NecVICCZf6gBLwH_17kMgngqpJ_jFTZsAECXAjTbc94TTc21KU9x4W5RqSJ6NJnW9mwfcsfjqnrjhAMPcw';
-
   private token = null;
 
   constructor(private http: HttpClient, private storage: Storage) {}
 
   createUser(user: User): Observable<User> {
     return this.http.post<User>(
-      `${this.baseUrl}/coreuser/?client_id=${this.clientSecret}`,
+      `${environment.baseUrl}/coreuser/?client_id=${environment.clientSecret}`,
       user,
     );
   }
@@ -30,7 +27,9 @@ export class AuthService {
     headers = headers.set('Content-Type', 'application/x-www-form-urlencoded');
     return this.http
       .post<any>(
-        `${this.baseUrl}/oauth/token/?client_id=${this.clientSecret}`,
+        `${environment.baseUrl}/oauth/token/?client_id=${
+          environment.clientSecret
+        }`,
         `username=${user.username}&password=${
           user.password
         }&grant_type=password`,

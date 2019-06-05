@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  baseUrl: 'https://development-thenicest-api.newapp.io',
+  clientSecret: 'wIY-NecVICCZf6gBLwH_17kMgngqpJ_jFTZsAECXAjTbc94TTc21KU9x4W5RqSJ6NJnW9mwfcsfjqnrjhAMPcw',
 };
 
 /*

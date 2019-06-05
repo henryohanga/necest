@@ -3,6 +3,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { Storage } from '@ionic/storage';
 
 import { Photo } from '../models/photo-location.model';
+import { HttpClient } from 'selenium-webdriver/http';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,11 @@ import { Photo } from '../models/photo-location.model';
 export class PhotoService {
   photos: Photo[] = [];
 
-  constructor(private camera: Camera, private storage: Storage) {}
+  constructor(
+    private camera: Camera,
+    private storage: Storage,
+    private http: HttpClient,
+  ) {}
 
   /**
    * Let's take a picture
@@ -48,4 +53,9 @@ export class PhotoService {
       this.photos = photos || [];
     });
   }
+
+  /**
+   * Handle uploading of a photo
+   */
+  uploadPhoto(imageData: any) {}
 }
