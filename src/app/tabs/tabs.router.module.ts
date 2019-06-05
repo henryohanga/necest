@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { TabsPage } from './tabs.page';
 import { AuthGuard } from '../auth.guard';
 
@@ -28,11 +29,6 @@ const routes: Routes = [
             canActivate: [AuthGuard],
           },
         ],
-      },
-      {
-        path: '',
-        redirectTo: '/tabs/tab2',
-        pathMatch: 'full',
       },
     ],
   },
